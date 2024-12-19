@@ -29,3 +29,27 @@ export const signUp=(formdata)=>async(dispatch)=>{
     }
      
  }
+
+
+//  logout
+
+export const logout=(formdata)=>async(dispatch)=>{
+   console.log("okk1")
+    try {
+      console.log("okk2")
+
+    localStorage.clear('profile')
+    localStorage.clear('store')
+   
+
+    console.log("okk3")
+
+     dispatch({type :'AUTH_LOGOUT'})
+     console.log("okk4")
+
+    }catch(err){
+      console.log("error in logout",err);
+      
+    }
+     
+ }

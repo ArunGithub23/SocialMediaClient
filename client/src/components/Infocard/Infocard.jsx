@@ -2,9 +2,21 @@ import React, { useState } from "react";
 import "./Infocard.css";
 import { UilPen } from "@iconscout/react-unicons";
 import ProfileModal from "../ProfileModal/ProfileModal";
+import { useDispatch } from "react-redux";
+import { logout } from "../../actions/AuthAction";
 
 const Infocard = () => {
   const [modalOpened, setModalOpened] = useState(false);
+   const [data,setData]=useState({firstname:"",lastname:"",password:"",confpass:"",username:""})
+  
+  const dispatch=useDispatch()
+
+
+
+
+  const handleLogout =()=>{
+    localStorage.clear('profile')
+  }
 
   return (
     <div className="InfoCard">
@@ -36,7 +48,7 @@ const Infocard = () => {
         </span>
         <span>india</span>
       </div>
-      <button className="button">Logout</button>
+      <button className="button" onClick={()=>{    dispatch(logout())  }}>Logoutd</button>
     </div>
   );
 };

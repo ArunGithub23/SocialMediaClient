@@ -18,7 +18,11 @@
                 return {...state,loading:false,error:true}
                 
                 break;
-        
+                case 'AUTH_LOGOUT':
+                    return {}
+                    
+                    break;
+            
             default:
                 return state
                 break;
