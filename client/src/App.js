@@ -10,6 +10,7 @@ function App() {
 
   const user=useSelector((state)=>state.authReducer.authData)
   console.log("user in app",user)
+  let x=process.env.REACT_APP_BaseUrl1|| "abc"
   return (
     <div className="App">
       <div className='blur' style={{top:'-18%',right:'0'}}></div>

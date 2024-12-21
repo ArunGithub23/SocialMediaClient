@@ -15,7 +15,7 @@ const Post = ({data}) => {
         const [likes,setlikes]=useState(data.likes.length)
 
         // console.log(".env",process.env.REACT_APP_PUBLIC_FOLDER,"data.image",data.Image)
-        // console.log("data is",data)
+        console.log("data is",data)
 
         const handlelike=()=>{
           setliked((prev)=>!prev)
@@ -25,7 +25,7 @@ const Post = ({data}) => {
 
   return (
     <div className='Post'>
-      <img src={data.Image?process.env.REACT_APP_PUBLIC_FOLDER+data.Image:""} alt=''/>
+      <img src={data.Image?process.env.REACT_APP_PUBLIC_FOLDER+data.Image:""} alt='no img'/>
 
         <div className='postReact'>
             <img src={liked?Heart:NotLike} style={{cursor:"pointer"}} onClick={handlelike}></img>

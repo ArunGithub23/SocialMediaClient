@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import Post from "../Post/Post";
 import { useSelector, useDispatch } from "react-redux";
@@ -11,11 +11,19 @@ const Posts = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.authReducer.authData);
   let { posts, loading } = useSelector((state) => state.postReducer);
+  let [selecteduser,setselecteduser]=useState(null)
+  let x=useSelector((state) => state.authReducer.selecteduser)
+
+  console.log('selecteduser in posts file11',selecteduser);
+ 
+ if( selecteduser!= x ) { setselecteduser(x) }
+
 
 
   useEffect(() => {
-    dispatch(getTimeLinePosts(user._id));
-  }, []);
+    // console.log('selecteduser in posts file',x);
+    dispatch(getTimeLinePosts(selecteduser));
+  }, [selecteduser]);
   if(!posts) return 'No Posts';
   if(params.id) posts = posts.filter((post)=> post.userId===params.id)
 

@@ -3,16 +3,18 @@ import './ProfileCard.css'
 import Cover from '../../img/cover.jpg'
 import Profile from '../../img/profileImg.jpg'
 import {useSelector} from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate,  } from 'react-router-dom'
 
 const ProfileCard = () => {
 
   const {user}=useSelector((state)=>state.authReducer.authData)
   const serverPublic=process.env.REACT_APP_PUBLIC_FOLDER
+ const navigate= useNavigate()
 
 
   return (
     <div className='ProfileCard'>
+        <button onClick={()=>{navigate("../home")}}> Back</button>
         <div className='ProfileImages'>
            <img src={user.coverPicture?serverPublic+user.coverPicture:serverPublic+"defaultCover.jpg"} alt=''/> 
            <img src={user.profilePicture?serverPublic+user.profilePicture:serverPublic+"defaultProfile.png"}/>

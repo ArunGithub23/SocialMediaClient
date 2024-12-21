@@ -53,3 +53,11 @@ export const logout=(formdata)=>async(dispatch)=>{
     }
      
  }
+
+
+ //when user clicks on other user this action should dispatch
+
+ export const UpdateSelectedUser = (status) => ({
+  type: "SELECT_USER",
+  payload: status,
+});

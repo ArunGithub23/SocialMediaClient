@@ -1,5 +1,5 @@
 
-    const authReducer=(state={authData:null,loading:false,error:false},action)=>{
+    const authReducer=(state={authData:null,selecteduser:'test',loading:false,error:false},action)=>{
 
         
         switch (action.type) {  
@@ -18,6 +18,14 @@
                 return {...state,loading:false,error:true}
                 
                 break;
+
+                case 'SELECT_USER':
+                    console.log('selecteduser reducer',action.payload,state.selecteduser);
+                    
+                return  { ...state, selecteduser: action.payload };
+                
+                break;
+
                 case 'AUTH_LOGOUT':
                     return {}
                     

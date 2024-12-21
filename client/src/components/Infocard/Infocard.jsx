@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { logout } from "../../actions/AuthAction";
 
 const Infocard = () => {
+
   const [modalOpened, setModalOpened] = useState(false);
    const [data,setData]=useState({firstname:"",lastname:"",password:"",confpass:"",username:""})
   
@@ -20,6 +21,7 @@ const Infocard = () => {
 
   return (
     <div className="InfoCard">
+
       <div className="infoHead">
         <h4>Your Info </h4>
         <UilPen
