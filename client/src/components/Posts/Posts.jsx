@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import "./Posts.css";
 import { useParams } from "react-router-dom";
 import { getTimeLinePosts } from "../../actions/postAction";
+import { UpdateSelectedUser } from "../../actions/AuthAction";
 
 const Posts = () => {
   const params = useParams()
@@ -13,6 +14,7 @@ const Posts = () => {
   let { posts, loading } = useSelector((state) => state.postReducer);
   let [selecteduser,setselecteduser]=useState(null)
   let x=useSelector((state) => state.authReducer.selecteduser)
+  const currentUserId= useSelector((state)=>state.authReducer.authData.user._id)
 
   console.log('selecteduser in posts file11',selecteduser);
  
@@ -30,6 +32,8 @@ const Posts = () => {
   
   return (
     <div className="Posts">
+           {   selecteduser!==currentUserId?<button onClick={ ()=>{   dispatch(UpdateSelectedUser(currentUserId)) }}> Back</button> :null}
+
       {loading
         ? "Fetching posts...."
         : posts.map((post, id) => {

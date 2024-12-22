@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
 import "./UserModal.css"; // Include basic CSS for styling the modal
-import { useSelector } from "react-redux";
-import { use } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { UpdateSelectedUser } from '../../actions/AuthAction'
+
 
 const UserModal = ( props ) => {
 
 
     let [users,setusers]=useState([])
     const [onClose,setonClose]=useState()
-    const [searchinput1,setsearchinput1]=useState(props.data.searchinput)
+    // const [searchinput1,setsearchinput1]=useState(props.data.searchinput)
     const currentUserId= useSelector((state)=>state.authReducer.authData.user._id)
     const BaseUrl=process.env.REACT_APP_BaseUrl1
+    const dispatch = useDispatch();
+    let selecteduser=useSelector((state) => state.authReducer.selecteduser)
+  
 
     
     // console.log('testssss123',searchinput1,onClose);
@@ -84,6 +88,13 @@ useEffect(()=>{
             }
           }
 
+          const setSelecteduser=(selecteduserId)=>{
+              // console.log('selecteduserId after click',selecteduserId);
+              
+              dispatch(UpdateSelectedUser(selecteduserId))
+            }
+          
+
 //   if (!isOpen) return null;
 
   return (
@@ -100,7 +111,19 @@ useEffect(()=>{
                 console.log("user.firstname",user.firstname);
                 
                 return(
-              <li key={user.id} className="user-item">
+              <li key={user.id} className="user-item"  onClick={(e)=>{if(selecteduser!=user?.id){setSelecteduser(user?.id)}else{setSelecteduser(currentUserId)}; // Check the current background color of the clicked element
+              const currentColor = e.currentTarget.style.background;
+          
+              // Reset all followers' background to white
+              document.querySelectorAll(".user-item").forEach((el) => {
+                el.style.background = "white";
+              });
+          
+              // Toggle the background color for the clicked follower
+              e.currentTarget.style.background = currentColor ===   "white" ?"rgb(184, 146, 64)": "white";
+    }} 
+              
+              >
                 <img src={user.image} alt={user.username} className="user-image" />
                 <div className="user-details" style={{color:'black'}}>
                   <p><strong style={{color:'black'}}>{user.firstname}</strong></p>

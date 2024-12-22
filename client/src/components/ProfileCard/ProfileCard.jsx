@@ -2,14 +2,36 @@ import React from 'react'
 import './ProfileCard.css'
 import Cover from '../../img/cover.jpg'
 import Profile from '../../img/profileImg.jpg'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import { Link, useNavigate,  } from 'react-router-dom'
+import { SetShowListOf } from '../../actions/AuthAction'
 
 const ProfileCard = () => {
 
   const {user}=useSelector((state)=>state.authReducer.authData)
   const serverPublic=process.env.REACT_APP_PUBLIC_FOLDER
  const navigate= useNavigate()
+ const dispatch = useDispatch();
+ let selecteduser=useSelector((state) => state.authReducer.selecteduser)
+
+
+ const toggleButton=(e)=>{
+    const currentColor=e.currentTarget.style.background 
+    e.currentTarget.style.background ="white"
+    // console.log('e.target is', e.currentTarget.style.background );
+
+    e.currentTarget.style.background = currentColor ===   "white" ?"rgb(184, 146, 64)": "white";
+    dispatch(SetShowListOf('following'))
+    }
+
+    const toggleButton1=(e)=>{
+        const currentColor=e.currentTarget.style.background 
+        e.currentTarget.style.background ="white"
+        // console.log('e.target is', e.currentTarget.style.background );
+    
+        e.currentTarget.style.background = currentColor ===   "white" ?"rgb(184, 146, 64)": "white";
+        dispatch(SetShowListOf('followers'))
+        }
 
 
   return (
@@ -28,12 +50,12 @@ const ProfileCard = () => {
         <div className='followStatus'>
             <hr/>
             <div>
-                <div className='follow'>
+                <div className='follow' onClick={toggleButton}>
                     <span>{user.following.length}</span>
                     <span>Following</span>
                 </div>
                 <div className='vl'></div>
-                <div className='follow'>
+                <div className='follow' onClick={toggleButton1}>
                     <span>{user.followers.length}</span>
                     <span>Followers</span>
                 </div>

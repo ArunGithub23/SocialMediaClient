@@ -61,3 +61,20 @@ export const logout=(formdata)=>async(dispatch)=>{
   type: "SELECT_USER",
   payload: status,
 });
+
+
+//toggle "showlistof"  state between 'follower and following' 
+
+export const SetShowListOf = (status) => ({
+  type: "SHOW_LIST",
+  payload: status,
+});
+
+
+
+//set userid of chat user that is clicked  for chat
+
+export const ChatUserClicked = (status) => ({
+  type: "CHAT_USER_CLICKED",
+  payload: status,
+});

@@ -1,5 +1,5 @@
 
-    const authReducer=(state={authData:null,selecteduser:'test',loading:false,error:false},action)=>{
+    const authReducer=(state={authData:null,chatuser:false,selecteduser:'test',showlistof:'followers',loading:false,error:false},action)=>{
 
         
         switch (action.type) {  
@@ -25,6 +25,21 @@
                 return  { ...state, selecteduser: action.payload };
                 
                 break;
+
+                case 'SHOW_LIST':
+                    console.log('Showlist reducer',state.showlistof);
+                    
+                return  { ...state, showlistof: action.payload };
+                
+                break;
+
+                case 'CHAT_USER_CLICKED':
+                    console.log('Chat_user reducer',state.chatuser);
+                    
+                return  { ...state, chatuser: action.payload };
+                
+                break;
+
 
                 case 'AUTH_LOGOUT':
                     return {}

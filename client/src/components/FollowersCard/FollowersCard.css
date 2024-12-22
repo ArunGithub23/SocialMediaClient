@@ -30,6 +30,10 @@
 
 }
 
+/* .follower :hover{
+    background-color: rgb(180, 106, 17);
+} */
+
 .follower >div{
     display: flex;
     gap:10px;

@@ -67,7 +67,7 @@ console.log("postshare image",image)
       <img src={user.profilePicture?serverPublic+user.profilePicture:serverPublic+"defaultProfile.png"} alt="#" />
 
       <div>
-        <input type="text" ref={desc} required placeholder="What's happening" />
+        <input type="text" ref={desc} required placeholder="Add Description..." />
         <div className="postOptions">
           <div
             className="option"

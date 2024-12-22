@@ -47,7 +47,9 @@
   .user-list {
     flex-grow: 1;
     overflow-y: auto;
-    padding-right: 8px; /* For scroll-bar spacing */
+    background-color: white;
+    margin-right: 20px;
+
   }
   
   .user-item {
@@ -56,6 +58,9 @@
     justify-content: space-between;
     padding: 8px 0;
     border-bottom: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 5px;
+
   }
   
   .user-image {
