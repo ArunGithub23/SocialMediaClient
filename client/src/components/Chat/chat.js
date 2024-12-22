@@ -84,7 +84,7 @@ const Chat = () => {
 
     try {
       const data= {senderid,"message":inputMessage,recipient}
-    if(inputMessage!==""){
+    if(inputMessage!=""){
         const response=await fetch(`${BaseUrl}/chat/createchat`,{
             'method':'post',
             'headers':{
@@ -167,7 +167,7 @@ const Chat = () => {
           onChange={(e) => setInputMessage(e.target.value)}
           style={styles.input}
         />
-        <button onClick={(e)=>{handleSend(e)}} style={styles.sendButton}>
+        <button onClick={(e)=>{handleSend(e);setInputMessage('')}} style={styles.sendButton}>
           Send
         </button>
       </div>
