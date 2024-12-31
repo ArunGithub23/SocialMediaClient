@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./Post.css"
 import Comment from '../../img/comment.png'
 import Share from '../../img/share.png'
@@ -13,8 +13,6 @@ const Post = ({data}) => {
         const {user}=useSelector((state)=>state.authReducer.authData)
         const [liked,setliked]=useState(data.likes.includes(user._id))
         const [likes,setlikes]=useState(data.likes.length)
-
-        // console.log(".env",process.env.REACT_APP_PUBLIC_FOLDER,"data.image",data.Image)
         console.log("data is",data)
 
         const handlelike=()=>{
@@ -22,10 +20,11 @@ const Post = ({data}) => {
          likePost(data._id,user._id)
           liked?setlikes((prev)=>prev-1):setlikes((prev)=>prev+1)
         }
-
+       
+        
   return (
     <div className='Post'>
-      <img src={data.Image?process.env.REACT_APP_PUBLIC_FOLDER+data.Image:""} alt='no img'/>
+      <img src={data.Image} alt='no img'/>
 
         <div className='postReact'>
             <img src={liked?Heart:NotLike} style={{cursor:"pointer"}} onClick={handlelike}></img>

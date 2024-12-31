@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./PostShare.css";
 import { UilScenery } from "@iconscout/react-unicons";
 import { UilPlayCircle } from "@iconscout/react-unicons";
@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { uploadImage, uploadPost } from "../../actions/uploadAction";
 
 const PostShare = () => {
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState('');
   const imageRef = useRef();
   const dispatch = useDispatch();
   const desc = useRef();
@@ -22,33 +22,38 @@ const PostShare = () => {
   //image set function
   const onImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {
-      console.log("okk",e.target.files[0]);
+      console.log("okk12",e.target.files[0]);
       let img = e.target.files[0];
       setImage(img);
-      console.log("img is ", image);
     }
 
     
   };
 
+
+  useEffect(()=>{
+    console.log("img is ", image );
+
+  },[image])
   //handling image upload and postupload
   const handlesubmit = (e) => {
     e.preventDefault();
     const newpost = {
       userid: user._id,
       desc: desc.current.value,
+      file :image
     };
 console.log("postshare image",image)
     if (image) {
-      const data = new FormData();
-      const filename = Date.now() + image.name;
-      data.append("name", filename);
-      data.append("file", image);
-      newpost.Image = filename;
+      // const data = new FormData();
+      // const filename = Date.now() + image.name;
+      // data.append("name", filename);
+      // // data.append("file", image);
+      // newpost.Image = filename;
       console.log("newpost", newpost);
       try {
         
-        dispatch(uploadImage(data));
+        // dispatch(uploadImage(data));
         dispatch(uploadPost(newpost));
       } catch (error) {
         console.log(error);
@@ -81,14 +86,14 @@ console.log("postshare image",image)
             <UilPlayCircle />
             Video
           </div>
-          <div className="option" style={{ color: "var(--location)" }}>
+          {/* <div className="option" style={{ color: "var(--location)" }}>
             <UilLocationPoint />
             Location
           </div>
           <div className="option" style={{ color: "var(--schedule)" }}>
             <UilSchedule />
             Schedule
-          </div>
+          </div> */}
 
           <button
             className="button ps-button"
