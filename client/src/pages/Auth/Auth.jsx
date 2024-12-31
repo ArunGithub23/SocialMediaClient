@@ -38,8 +38,9 @@ const Auth = () => {
       <div className="a-left">
         <img src={Logo} alt="" />
         <div className="Webname">
-          <h1>Gupta Media</h1>
-          <h6>explore the idea</h6>
+          <h1>SociaLink</h1>
+          <h5>Where Technology Meets Social Connections</h5>
+          <h6>Powered By @ArunGupta</h6>
         </div>
       </div>
 {/* login signup feature*/ }
