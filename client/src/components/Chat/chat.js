@@ -192,7 +192,7 @@ const styles = {
     flexDirection: "column",
     justifyContent: "space-between",
     height: "80vh",
-    width: "400px",
+    width: "90%",
     // margin: "20px auto",
     border: "1px solid #cff",
     borderRadius: "8px",
