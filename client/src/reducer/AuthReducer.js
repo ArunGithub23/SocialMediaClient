@@ -1,5 +1,5 @@
 
-    const authReducer=(state={authData:null,chatuser:false,selecteduser:'test',showlistof:'followers',loading:false,error:false},action)=>{
+    const authReducer=(state={authData:null,chatuser:{id:null,name:"",state:false},selecteduser:'test',showlistof:'followers',loading:false,error:false},action)=>{
 
         
         switch (action.type) {  

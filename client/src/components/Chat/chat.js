@@ -18,7 +18,7 @@ const Chat = () => {
   const [errormessage, seterrormessage] = useState({ msg: "", color: "red", display: "none" });
 
   useEffect(()=>{
-    setrecipient1(prevchatuser.id)
+    setrecipient1(prevchatuser?.id)
 
   },[prevchatuser])
 

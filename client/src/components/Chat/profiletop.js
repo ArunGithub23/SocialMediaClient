@@ -7,7 +7,7 @@ import { ChatUserClicked } from '../../actions/AuthAction';
 const Profiletop = ( {user}) => {
 
     // const username=localStorage.getItem('user')
-    const [username,setusername]=useState(null);
+    const [username,setusername]=useState(" ");
     const dispatch = useDispatch();
     let  prevchatuser= useSelector((state) => state.authReducer.chatuser);
 
@@ -16,18 +16,20 @@ const Profiletop = ( {user}) => {
     
 
     useEffect(()=>{
-        // console.log("prevchatuser is ",prevchatuser );
-        
-        setusername(prevchatuser.name);
+        console.log("prevchatuser is ",prevchatuser );
+        if(prevchatuser?.name!=""){        setusername(prevchatuser?.name);
+        }
     },[prevchatuser])
 
 //
 const setSelectedChatUser = (selecteduser) => {
+  const id=prevchatuser?.id
+  const name=prevchatuser?.name
     if(prevchatuser.state==true){ 
-           dispatch(ChatUserClicked(false));
+           dispatch(ChatUserClicked({id,name,state:false}));
     }
     else{
-        dispatch(ChatUserClicked(true));
+        dispatch(ChatUserClicked({id,name,state:true}));
 
     }
   };
