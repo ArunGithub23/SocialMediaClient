@@ -11,13 +11,15 @@ import { useSelector } from 'react-redux'
 
 
 const Navbar = () => {
-    const {user}=useSelector((state)=>state.authReducer.authData)
+
+    
+    const user=useSelector((state)=>state?.authReducer?.authData)
 
   return (
     
        <div className='Navbar-container'>
               <Link to="../home"><img src={Home} alt='#'/></Link>
-              <Link to={`mobile/profile/${user._id}`}>              <UilSetting/>     </Link>
+              <Link to={`mobile/profile/${user?._id}`}>              <UilSetting/>     </Link>
 
               <img src={Noti} alt=''/>
               <Link to='/chat'> <img src={Comment} alt=''/></Link>

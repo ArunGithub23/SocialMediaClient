@@ -33,7 +33,7 @@ setchatuser(x)
 
       {/* <TrendCard/> */}
       {/*  */}
-     {chatuser.state ?  <Chat/> : <UserListPanel />}
+     {chatuser?.state ?  <Chat/> : <UserListPanel />}
       {/* <button className='button r-button' >Share</button> */}
     </div>
   )
