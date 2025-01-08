@@ -8,6 +8,7 @@ import {useSelector} from 'react-redux'
 import {Routes,Route,Navigate} from 'react-router-dom'
 import DesktopChat from './pages/Chat/DesktopChat';
 import Navbar from './components/NavBar/Navbar';
+import ProfileCard from './components/ProfileCard/ProfileCard';
 
 function App() {
 
@@ -25,6 +26,8 @@ function App() {
         <Route path='/auth' element={user?<Navigate to="../home"/>:<Auth/>}/>
         <Route path='/profile/:id' element={user? <Profile/>:<Navigate to="../auth"/>}/>
         <Route path='/chat' element = {user? <DesktopChat/>:<Navigate to="../auth"/>}/>
+        <Route path='mobile/profile/:id' element={user? <ProfileCard/>:<Navigate to="../auth"/>}/>
+
       </Routes>
 
     

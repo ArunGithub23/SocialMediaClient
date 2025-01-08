@@ -24,4 +24,21 @@
 
 
   
+  @media (max-width: 768px) {
+    .desktop-chat-container > .dc-chat {
+      flex: 1;               /* Takes 70% of the width */
+
+      margin-right: 5vw;
+
+    }
+  
+    .desktop-chat-container > .dc-user-panel {
+      flex: 1;               /* Takes 30% of the width */
+      max-width: 400px;       
+      background-color: #f0f0f0;
+      margin-right: 5vw;
+    }
+    
+
+  }
   

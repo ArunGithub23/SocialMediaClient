@@ -30,7 +30,7 @@ const DesktopChat = () => {
        
       </div>):
       ( <div className='desktop-chat-container'>
-        {!prevchatuser? <div className='dc-user-panel'>
+        {!prevchatuser?.state ? <div className='dc-user-panel'>
         <UserListPanel/>
         </div> :  <div className='dc-chat'>
         <Chat/>

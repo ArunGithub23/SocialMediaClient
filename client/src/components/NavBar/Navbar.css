@@ -10,3 +10,40 @@
     background-color: antiquewhite;
 
   }
+
+  /* Mobile-specific styles */
+@media (max-width: 768px) {
+    .Navbar-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 10px 0;
+      background-color: #9e2929; /* Optional: Add a background for better visibility */
+      border-top: 1px solid #ddd; /* Optional: Add a subtle border for separation */
+      position: fixed; /* Stick the navbar to the bottom */
+      width: 100%;
+      bottom: 0 ;
+      height: auto;
+      z-index: 100;
+    }
+  
+    .Navbar-container img {
+      width: 24px;
+      height: 24px;
+    }
+  
+    .Navbar-container a {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none; /* Remove underline for links */
+      color: inherit; /* Keep default text color */
+    }
+  
+    .Navbar-container svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+  

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './ProfileCard.css'
 import Cover from '../../img/cover.jpg'
 import Profile from '../../img/profileImg.jpg'
@@ -13,6 +13,16 @@ const ProfileCard = () => {
  const navigate= useNavigate()
  const dispatch = useDispatch();
  let selecteduser=useSelector((state) => state.authReducer.selecteduser)
+  const [mobile,setMobile] = useState(false);
+     // Detect screen size
+     useEffect(() => {
+       const handleResize = () => {
+         setMobile(window.innerWidth <= 768); // Adjust breakpoint as needed
+       };
+       handleResize(); // Check on initial load
+       window.addEventListener('resize', handleResize);
+       return () => window.removeEventListener('resize', handleResize);
+     }, []);
 
 
  const toggleButton=(e)=>{
@@ -34,8 +44,7 @@ const ProfileCard = () => {
         }
 
 
-  return (
-    <div className='ProfileCard'>
+  return ( <div className='ProfileCard'>
         <button onClick={()=>{navigate("../home")}}> Back</button>
         <div className='ProfileImages'>
            <img src={user.coverPicture?serverPublic+user.coverPicture:serverPublic+"defaultCover.jpg"} alt=''/> 
@@ -67,8 +76,8 @@ const ProfileCard = () => {
             <Link state={{ decoration:"none",color:"inherit"}} to={`/profile/${user._id}`}> My Profile</Link>
            </span>
       
-    </div>
-  )
+    </div> 
+     )
 }
 
 export default ProfileCard

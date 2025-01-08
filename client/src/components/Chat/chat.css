@@ -128,3 +128,18 @@
   }
   
   
+
+  @media (max-width: 768px) {
+
+    .user-list-panel {
+      width: 100%;
+      height: 84vh;
+      border-bottom-left-radius: 8pxs;
+      border-top-left-radius: 8px;
+      border-right: 1px solid #ccc;
+      display: flex;
+      flex-direction: column;
+    }
+    
+
+  }
