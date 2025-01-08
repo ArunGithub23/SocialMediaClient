@@ -7,6 +7,7 @@ import Chat from './components/Chat/chat';
 import {useSelector} from 'react-redux'
 import {Routes,Route,Navigate} from 'react-router-dom'
 import DesktopChat from './pages/Chat/DesktopChat';
+import Navbar from './components/NavBar/Navbar';
 
 function App() {
 
@@ -26,7 +27,12 @@ function App() {
         <Route path='/chat' element = {user? <DesktopChat/>:<Navigate to="../auth"/>}/>
       </Routes>
 
+    
+        <Navbar  />
+       
     </div>
+
+   
   );
 }
 

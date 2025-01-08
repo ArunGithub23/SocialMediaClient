@@ -1,0 +1,12 @@
+
+.Navbar-container{
+    display: flex;
+    height: auto;
+    width: 100%;
+    position:fixed;
+    bottom: 0;
+    left: 0;
+    justify-content: space-around;
+    background-color: antiquewhite;
+
+  }

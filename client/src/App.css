@@ -19,7 +19,7 @@
   color: var(--black);
   background: #f3f3f3;
   padding: 1rem 1rem;
-  max-height: 130vh;
+  max-height: 100vh;
 
 }
 
@@ -55,3 +55,4 @@ button:hover{
 ::-webkit-scrollbar{
   display: none;
 }
+

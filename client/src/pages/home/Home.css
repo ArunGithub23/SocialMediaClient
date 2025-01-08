@@ -12,21 +12,7 @@
 
 /* Default styles for all screen sizes */
 .ProfileSide, .PostSide, .RightSide {
-  flex: 1;
+flex: 1;
 }
 
-/* For mobile screens (max-width: 768px), show only the ProfileSide component */
-@media screen and (max-width: 768px) {
-  .Home {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .ProfileSide {
-    display: block; /* Show ProfileSide */
-  }
-
-  .PostSide, .RightSide {
-    display: none; /* Hide PostSide and RightSide */
-  }
-}
+ 
