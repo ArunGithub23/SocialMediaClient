@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './ProfileCard.css'
 import Cover from '../../img/cover.jpg'
-import Profile from '../../img/profileImg.jpg'
+import Profile from '../../img/defaultProfile.png'
 import {useDispatch, useSelector} from 'react-redux'
 import { Link, useNavigate,  } from 'react-router-dom'
 import { FollowButtonClicked, SetShowListOf } from '../../actions/AuthAction'
@@ -51,8 +51,8 @@ const ProfileCard = () => {
   return ( <div className='ProfileCard'>
         <button onClick={()=>{navigate("../home")}}> Back</button>
         <div className='ProfileImages'>
-           <img src={user.coverPicture?serverPublic+user.coverPicture:serverPublic+"defaultCover.jpg"} alt=''/> 
-           <img src={user.profilePicture?serverPublic+user.profilePicture:serverPublic+"defaultProfile.png"}/>
+           <img src={(user.coverPicture?serverPublic+user.coverPicture: Cover)} alt=''/> 
+           <img src={user.profilePicture?serverPublic+user.profilePicture:Profile}/>
         </div>
 
         <div className='ProfileName'>
