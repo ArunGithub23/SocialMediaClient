@@ -33,6 +33,29 @@
     -webkit-text-fill-color: transparent;
 }
 
+.Webname>h5,h6{
+    
+    background-image: var(--buttonBg);
+    margin: 0px;
+    background-size: 100%;
+    -webkit-background-clip: text ;
+    -webkit-text-fill-color: transparent;
+}
+
+.strongtag{
+
+    -webkit-text-fill-color: rgb(151, 67, 15);
+
+}
+h3{
+    background-color: red;
+    /* create the gradient*/
+    background-image: var(--buttonBg);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text ;
+    -webkit-text-fill-color: transparent;
+}
 
 .infoForm{
     display: flex;
@@ -64,7 +87,7 @@
 .infoButton{
     width: 6rem;
     height: 2rem;
-    align-self: flex-end;
+    align-self: center;
 }
 .authForm{
     background-color: var(--cardColor);
@@ -75,4 +98,18 @@
     width: 100%;
     align-items: center;
     justify-content: center;
+}
+
+
+@media (max-width: 768px) {
+
+    .Auth {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .Auth > div {
+        flex-direction: column;
+        width: 100%;
+    }
 }

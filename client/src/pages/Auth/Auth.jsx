@@ -40,7 +40,7 @@ const Auth = () => {
         <div className="Webname">
           <h1>SociaLink</h1>
           <h5>Where Technology Meets Social Connections</h5>
-          <h6>Powered By @ArunGupta</h6>
+          <h6>Powered By <strong className="strongtag"> @ArunGupta</strong></h6>
         </div>
       </div>
 {/* login signup feature*/ }
