@@ -4,10 +4,11 @@ import Cover from '../../img/cover.jpg'
 import Profile from '../../img/profileImg.jpg'
 import {useDispatch, useSelector} from 'react-redux'
 import { Link, useNavigate,  } from 'react-router-dom'
-import { SetShowListOf } from '../../actions/AuthAction'
+import { FollowButtonClicked, SetShowListOf } from '../../actions/AuthAction'
+import Follower from '../../pages/Follower/Follower'
 
 const ProfileCard = () => {
-
+    const followclicked=useSelector((state) => state.authReducer.followclicked);
   const {user}=useSelector((state)=>state.authReducer.authData)
   const serverPublic=process.env.REACT_APP_PUBLIC_FOLDER
  const navigate= useNavigate()
@@ -32,6 +33,8 @@ const ProfileCard = () => {
 
     e.currentTarget.style.background = currentColor ===   "white" ?"rgb(184, 146, 64)": "white";
     dispatch(SetShowListOf('following'))
+    dispatch(FollowButtonClicked(true))
+
     }
 
     const toggleButton1=(e)=>{
@@ -41,6 +44,7 @@ const ProfileCard = () => {
     
         e.currentTarget.style.background = currentColor ===   "white" ?"rgb(184, 146, 64)": "white";
         dispatch(SetShowListOf('followers'))
+        dispatch(FollowButtonClicked(true))
         }
 
 
@@ -61,12 +65,12 @@ const ProfileCard = () => {
             <div>
                 <div className='follow' onClick={toggleButton}>
                     <span>{user.following.length}</span>
-                    <span>Following</span>
-                </div>
+                     <span>Following</span> 
+                    </div>
                 <div className='vl'></div>
                 <div className='follow' onClick={toggleButton1}>
                     <span>{user.followers.length}</span>
-                    <span>Followers</span>
+                   <span>Followers</span> 
                 </div>
 
             </div>
@@ -75,7 +79,9 @@ const ProfileCard = () => {
         <span >
             <Link state={{ decoration:"none",color:"inherit"}} to={`/profile/${user._id}`}> My Profile</Link>
            </span>
-      
+
+{    followclicked? (      <Follower/> ) :(<></>) }      
+    
     </div> 
      )
 }

@@ -1,5 +1,5 @@
 
-    const authReducer=(state={authData:null,chatuser:{id:null,name:"",state:false},selecteduser:'test',showlistof:'followers',loading:false,error:false},action)=>{
+    const authReducer=(state={authData:null,chatuser:{id:null,name:"",state:false},followclicked:false,selecteduser:'test',showlistof:'followers',loading:false,error:false},action)=>{
 
         
         switch (action.type) {  
@@ -37,6 +37,11 @@
                     console.log('Chat_user reducer',state.chatuser);
                     
                 return  { ...state, chatuser: action.payload };
+
+                case 'FOLLOW_BUTTON_CLICKED':
+                    console.log('followclicked reducer',state.followclicked);
+                    
+                return  { ...state, followclicked: action.payload };
                 
                 break;
 

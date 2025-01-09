@@ -16,3 +16,24 @@ export const getTimeLinePosts=(id)=>async(dispatch)=>{
         console.log(error)
     }
 }
+
+
+
+export const getRecentPosts=(id)=>async(dispatch)=>{
+    console.log("check1")
+
+    dispatch({type:"RECENTPOSTS_RETREIVING_START"})
+    try {
+        console.log("in post action")
+        const {data}=await PostApi.getRecentPosts();
+        console.log("data in recentpost action",data)
+        dispatch({type:"RECENTPOSTS_RETREIVING_SUCCESS",data:data.result
+            
+        })
+
+    } catch (error) {
+        console.log("executing catch block of recentpostaction")
+        dispatch({type:"RECENTPOSTS_RETREIVING_FAIL"})
+        console.log(error)
+    }
+}

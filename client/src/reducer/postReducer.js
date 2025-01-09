@@ -1,5 +1,7 @@
+import RecentPosts from "../pages/RecentPosts/RecentPosts";
+
 const postReducer = (
-    state = { posts: null, loading: false, error: false, uploading: false },
+    state = { posts: null,recentposts:null, loading: false, error: false, uploading: false },
     action
   ) => {
     switch (action.type) {
@@ -17,6 +19,16 @@ const postReducer = (
         
         return { ...state, posts: action.data, loading: false, error: false };
       case "RETREIVING_FAIL":
+        return { ...state, loading: false, error: true };
+     
+
+         // belongs to RecentPosts.jsx
+      case "RECENTPOSTS_RETREIVING_START":
+        return { ...state, loading: true, error: false };
+      case "RECENTPOSTS_RETREIVING_SUCCESS":
+        
+        return { ...state, recentposts: action.data, loading: false, error: false };
+      case "RECENTPOSTS_RETREIVING_FAIL":
         return { ...state, loading: false, error: true };
       default:
         return state;

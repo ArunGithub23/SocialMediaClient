@@ -78,3 +78,9 @@ export const ChatUserClicked = (status) => ({
   type: "CHAT_USER_CLICKED",
   payload: status,
 });
+
+
+export const FollowButtonClicked = (status) => ({
+  type: "FOLLOW_BUTTON_CLICKED",
+  payload: status,
+});
