@@ -6,6 +6,8 @@ import {useDispatch, useSelector} from 'react-redux'
 import { Link, useNavigate,  } from 'react-router-dom'
 import { FollowButtonClicked, SetShowListOf } from '../../actions/AuthAction'
 import Follower from '../../pages/Follower/Follower'
+import Posts from '../Posts/Posts'
+import PostSide from '../PostSide/PostSide'
 
 const ProfileCard = () => {
     const followclicked=useSelector((state) => state.authReducer.followclicked);
@@ -80,8 +82,9 @@ const ProfileCard = () => {
             <Link state={{ decoration:"none",color:"inherit"}} to={`/profile/${user._id}`}> My Profile</Link>
            </span>
 
-{    followclicked? (      <Follower/> ) :(<></>) }      
-    
+{    followclicked&&mobile? (      <Follower/> ) :(<></>) }     
+
+{  mobile ? ( <PostSide/> ) : (<></>)}    
     </div> 
      )
 }

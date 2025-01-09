@@ -5,7 +5,7 @@ import { UilPlayCircle } from "@iconscout/react-unicons";
 import { UilSchedule } from "@iconscout/react-unicons";
 import { UilTimes } from "@iconscout/react-unicons";
 import { UilLocationPoint } from "@iconscout/react-unicons";
-import ProfileImage from "../../img/profileImg.jpg";
+import defaultProfile from "../../img/defaultProfile.png";
 import { useSelector, useDispatch } from "react-redux";
 import { uploadImage, uploadPost } from "../../actions/uploadAction";
 
@@ -69,7 +69,7 @@ console.log("postshare image",image)
 
   return (
     <div className="PostShare">
-      <img src={user.profilePicture?serverPublic+user.profilePicture:serverPublic+"defaultProfile.png"} alt="#" />
+      <img src={user.profilePicture?serverPublic+user.profilePicture:defaultProfile} alt="#" />
 
       <div>
         <input type="text" ref={desc} required placeholder="Add Description..." />
