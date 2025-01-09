@@ -78,7 +78,7 @@ overflow-y: auto;
     display: flex;
     flex-direction: column;
     background-color:white;
-    padding: 8px;
+    /* padding: 8px; */
     width: 100px;
     color: rgb(32, 28, 14);
     border-radius: 8px;

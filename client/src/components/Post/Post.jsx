@@ -11,13 +11,13 @@ import { likePost } from '../../Api/PostRequest'
 
 const Post = ({data}) => {
         const {user}=useSelector((state)=>state.authReducer.authData)
-        const [liked,setliked]=useState(data.likes.includes(user._id))
-        const [likes,setlikes]=useState(data.likes.length)
+        const [liked,setliked]=useState(data?.likes.includes(user?._id))
+        const [likes,setlikes]=useState(data?.likes.length)
         console.log("data is",data)
 
         const handlelike=()=>{
           setliked((prev)=>!prev)
-         likePost(data._id,user._id)
+         likePost(data?._id,user?._id)
           liked?setlikes((prev)=>prev-1):setlikes((prev)=>prev+1)
         }
        
@@ -34,8 +34,8 @@ const Post = ({data}) => {
 
         <span>{likes}likes</span>
         <div className='datail'>
-            <span><b>{data.name}</b></span>
-            <span>{data.desc}</span>
+            <span><b>{data?.name}</b></span>
+            <span>{data?.desc}</span>
         </div>
 
 

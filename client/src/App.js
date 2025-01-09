@@ -38,20 +38,20 @@ function App() {
       <div className='blur' style={{top:'36%',left:'-8rem'}}></div> */}
 
       <Routes>
-        <Route path='/' element={user?<Navigate to='/home' />:<Navigate to= "/auth" />}/>
-        <Route path='/home' element={user?<Home/>:<Navigate to="../auth"/>}/>
-        <Route path='/auth' element={user?<Navigate to="../home"/>:<Auth/>}/>
+        <Route path='/' element={mobile&&user?<Navigate to='/mobile/TimeLine' />:user ?<Navigate to="../home"/> :<Navigate to= "/auth" />}/>
+        <Route path='/home' element={mobile&&user?<Navigate to="../mobile/TimeLine"/>:user ?<Home/>:<Navigate to="../auth"/>}/>
+        <Route path='/auth' element={mobile&&user?<Navigate to="../mobile/TimeLine"/>:user ?<Navigate to="../home"/> :<Auth/>}/>
         <Route path='/profile/:id' element={user? <Profile/>:<Navigate to="../auth"/>}/>
         <Route path='/chat' element = {user? <DesktopChat/>:<Navigate to="../auth"/>}/>
-        <Route path='/mobile/profile/:id' element={user? <ProfileCard/>:<Navigate to="../auth"/>}/>
-          <Route path='/mobile/TimeLine' element={user? <RecentPosts/>:<Navigate to="../auth"/>}/>
+        <Route path='/mobile/profile/:id' element={mobile&&user? <ProfileCard/>:<Navigate to="../auth"/>}/>
+          <Route path='/mobile/TimeLine' element={mobile&&user? <RecentPosts/>:<Navigate to="../auth"/>}/>
           {/* <Route path='/mobile/follower' element={user? <FollowersCard/>:<Navigate to="../auth"/>}/> */}
 
 
       </Routes>
 
     
-{mobile ?       ( <Navbar  /> ):(<></>) }       
+{mobile && user?       ( <Navbar  /> ):(<></>) }       
     </div>
 
    

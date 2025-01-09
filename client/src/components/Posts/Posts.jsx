@@ -16,7 +16,7 @@ const Posts = () => {
   let x=useSelector((state) => state.authReducer.selecteduser)
   const currentUserId= useSelector((state)=>state.authReducer.authData.user._id)
 
-  console.log('selecteduser in posts file11',selecteduser);
+  console.log('selecteduser and posts in posts file11',selecteduser,posts);
  
  if( selecteduser!= x ) { setselecteduser(x) }
 
@@ -27,7 +27,7 @@ const Posts = () => {
     dispatch(getTimeLinePosts(selecteduser));
   }, [selecteduser]);
   if(!posts) return 'No Posts';
-  if(params.id) posts = posts.filter((post)=> post.userId===params.id)
+  if(params.id){ posts = posts.filter((post)=> post?.userid===params?.id)}
 
   
   return (

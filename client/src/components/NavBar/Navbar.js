@@ -13,7 +13,8 @@ import { useSelector } from 'react-redux'
 const Navbar = () => {
 
     
-    const user=useSelector((state)=>state?.authReducer?.authData)
+    const user=useSelector((state)=>state?.authReducer?.authData.user)
+    console.log('user in navbar',user);
 
   return (
     

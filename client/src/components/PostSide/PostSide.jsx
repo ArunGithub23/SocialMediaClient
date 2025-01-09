@@ -14,8 +14,13 @@ const PostSide = () => {
     <div className='PostSide'>
 
         {(currentUserId==selecteduser ? <PostShare/>:null)}
-        <Posts/>
-      
+        
+        <div className='Posts-container'>
+          <h3 className='Posts-heading'>View Your Posts</h3>
+          <Posts/>
+        </div>
+
+
     </div>
   )
 }

@@ -1,9 +1,11 @@
 .Post{
     display: flex;
     flex-direction: column;
-    padding: 1rem;
+    padding-top : 1rem;
     background-color: var(--cardColor);
     gap: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .Post>img{
