@@ -1,5 +1,5 @@
 import React from 'react'
-import Noti from '../../img/noti.png'
+import searchIcon2 from '../../img/searchicon2.png'
 import { Link } from 'react-router-dom'
 import Comment from '../../img/comment.png'
 import {UilSetting} from '@iconscout/react-unicons'
@@ -20,10 +20,11 @@ const Navbar = () => {
     
        <div className='Navbar-container'>
               <Link to='/mobile/TimeLine'><img src={Home} alt='#'/></Link>
-              <Link to={`/mobile/profile/${user?._id}`}>              <UilSetting/>     </Link>
+              
+              <Link  to={`/mobile/search`}>              <img src={searchIcon2} alt=''/>             </Link>
 
-              <img src={Noti} alt=''/>
               <Link to='/chat'> <img src={Comment} alt=''/></Link>
+              <Link to={`/mobile/profile/${user?._id}`}>              <UilSetting/>     </Link>
             </div>
   )
 }

@@ -14,9 +14,18 @@ const UserModal = ( props ) => {
     const BaseUrl=process.env.REACT_APP_BaseUrl1
     const dispatch = useDispatch();
     let selecteduser=useSelector((state) => state.authReducer.selecteduser)
-  
+    const [mobile,setMobile] = useState(false);
 
-    
+
+    // Detect screen size
+    useEffect(() => {
+      const handleResize = () => {
+        setMobile(window.innerWidth <= 768); // Adjust breakpoint as needed
+      };
+      handleResize(); // Check on initial load
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }, []);  
     // console.log('testssss123',searchinput1,onClose);
 
 
@@ -101,9 +110,9 @@ useEffect(()=>{
     ( onClose ?
     <div className="modal-overlay">
       <div className="modal-container">
-        <button className="close-btn" onClick={()=>{setonClose(false)}}>
+       {!mobile? ( <button className="close-btn" onClick={()=>{setonClose(false)}}>
           ×
-        </button>
+        </button>):(<> </>)}
         <h4>Search Results </h4>
         {users.length > 0 ? (
           <ul className="user-list">

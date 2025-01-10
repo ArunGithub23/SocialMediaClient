@@ -19,7 +19,7 @@ const LogoSearch = () => {
     <div className='LogoSearch'>
       <img src={Logo} alt="img"></img>
       <div className='Search'>
-        <input type='search' placeholder='#Explore' onChange={(e)=>{setsearchinput(e.target.value);if(e.target.value!=''){setisOpen((prev)=>prev+1+"")}else{setisOpen(false)}}}/>
+        <input type='search' placeholder='Search People' onChange={(e)=>{setsearchinput(e.target.value);if(e.target.value!=''){setisOpen((prev)=>prev+1+"")}else{setisOpen(false)}}}/>
         <div className='s-icon'>
           <UilSearch/>
           <UserModal data={{ isOpen: isOpen, searchinput: searchinput }} />
