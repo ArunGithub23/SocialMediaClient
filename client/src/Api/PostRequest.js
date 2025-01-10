@@ -6,3 +6,5 @@ export const getTimeLinePosts=(id)=>API.get(`/post/${id}/timeline`)
 export const getRecentPosts=()=>API.get(`/post/getrecentposts`)
 
 export const likePost=(id,userid)=>API.post(`/post/${id}/like`,{userid:userid})
+
+export const deletePost=(id,userid)=>API.post(`/post/deletepost/${id}`,{userid:userid})

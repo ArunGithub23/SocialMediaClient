@@ -37,3 +37,23 @@ export const getRecentPosts=(id)=>async(dispatch)=>{
         console.log(error)
     }
 }
+
+
+export const deletePostAction=(args)=>async(dispatch)=>{
+    console.log("check1" ,args)
+
+    dispatch({type:"RETREIVING_START"})
+    try {
+        console.log("in deletepost action")
+        const {data}=await PostApi.deletePost(args?.id,args?.userid);
+        console.log("data in deletepost action",data)
+        // dispatch({type:"RETREIVING_SUCCESS",data:data})
+
+    } catch (error) {
+        console.log("executing catch block of deletepostaction")
+        dispatch({type:"RETREIVING_FAIL"})
+        console.log(error)
+    }
+}
+
+
