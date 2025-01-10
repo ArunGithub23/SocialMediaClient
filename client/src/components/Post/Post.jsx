@@ -49,7 +49,7 @@ const Post = (props) => {
               await navigator.share({
                 title:  'Check this out!',
                 text:  'Amazing post on our platform!',
-                url: `${postUrl}`, // Use the generated URL
+                url: `/sharedpost${postUrl}`, // Use the generated URL
               });
               console.log('Post shared successfully');
             } catch (error) {
