@@ -7,7 +7,7 @@ import deleteicon from '../../img/deleteIcon2.png'
 import Heart from '../../img/like.png'
 import NotLike from '../../img/notlike.png'
 import {useDispatch, useSelector} from 'react-redux'
-import { deletePost, likePost } from '../../Api/PostRequest'
+import { likePost } from '../../Api/PostRequest'
 import { deletePostAction } from '../../actions/postAction'
 
 
@@ -16,6 +16,7 @@ const Post = (props) => {
         const {user}=useSelector((state)=>state.authReducer.authData)
         const [liked,setliked]=useState(props?.data?.likes.includes(user?._id))
         const [likes,setlikes]=useState(props?.data?.likes.length)
+        let { posts } = useSelector((state) => state.postReducer);
 
         const dispatch=useDispatch()
         console.log("data is",props?.data)
@@ -32,9 +33,13 @@ const Post = (props) => {
           const userid=user?._id
 
           console.log("id is",id,userid);
+           const updatedposts=posts.filter((post)=> post?._id!== id)
           
-          dispatch(deletePostAction({id,userid}))
+          dispatch(deletePostAction({id,userid,updatedposts}))
         }
+
+
+
   return (
     <div className='Post'>
       <img src={props?.data.Image} alt='no img'/>

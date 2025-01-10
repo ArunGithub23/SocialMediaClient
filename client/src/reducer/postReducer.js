@@ -20,6 +20,8 @@ const postReducer = (
         return { ...state, posts: action.data, loading: false, error: false };
       case "RETREIVING_FAIL":
         return { ...state, loading: false, error: true };
+        case "RETREIVING_FAIL_DELETE":
+        return { ...state, loading: false, error: false };
      
 
          // belongs to RecentPosts.jsx

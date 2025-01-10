@@ -1,5 +1,6 @@
 
 import * as PostApi from '../Api/PostRequest'
+
 export const getTimeLinePosts=(id)=>async(dispatch)=>{
     console.log("check1")
 
@@ -40,14 +41,25 @@ export const getRecentPosts=(id)=>async(dispatch)=>{
 
 
 export const deletePostAction=(args)=>async(dispatch)=>{
+
     console.log("check1" ,args)
 
     dispatch({type:"RETREIVING_START"})
     try {
         console.log("in deletepost action")
+         
+        
         const {data}=await PostApi.deletePost(args?.id,args?.userid);
         console.log("data in deletepost action",data)
-        // dispatch({type:"RETREIVING_SUCCESS",data:data})
+
+        if(data.statuscode==200){
+            dispatch({type:"RETREIVING_SUCCESS",data:args?.updatedposts})
+
+        }else{
+            dispatch({type:"RETREIVING_FAIL_DELETE"})
+
+        }
+
 
     } catch (error) {
         console.log("executing catch block of deletepostaction")
