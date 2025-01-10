@@ -64,7 +64,7 @@ const Post = (props) => {
 
   return (
     <div className='Post'>
-      <img src={props?.data.Image} alt='no img'/>
+      <img src={props?.data?.Image} alt='no img'/>
 
         <div className='postReact'>
             <img src={liked?Heart:NotLike} style={{cursor:"pointer"}} onClick={handlelike}></img>

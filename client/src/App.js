@@ -13,6 +13,7 @@ import RecentPosts from './pages/RecentPosts/RecentPosts';
 import { useEffect, useState } from 'react';
 import FollowersCard from './components/FollowersCard/FollowersCard';
 import Search from './pages/Search/Search';
+import SharedPost from './pages/SharedPost/SharedPost';
 
 function App() {
 
@@ -47,6 +48,9 @@ function App() {
         <Route path='/mobile/profile/:id' element={mobile&&user? <ProfileCard/>:<Navigate to="../auth"/>}/>
           <Route path='/mobile/TimeLine' element={mobile&&user? <RecentPosts/>:<Navigate to="../auth"/>}/>
           <Route path='/mobile/search' element={mobile&&user? <Search/>:<Navigate to="../auth"/>}/>
+
+          {/* //public posts shared bu user */}
+          <Route path='/mobile/sharedpost/:id' element={mobile? <SharedPost/>: <></>}/>
 
 
       </Routes>
