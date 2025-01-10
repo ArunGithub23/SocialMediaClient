@@ -42,14 +42,14 @@ const Post = (props) => {
 
         const shareOnOtherApps = async (post) => {
           // const { title, content, _id } = post;
-          // const postUrl = generatePostUrl(_id); // Generate dynamic URL
+          const postUrl = props?.data?._id; // Generate dynamic URL
         
           if (navigator.share) {
             try {
               await navigator.share({
                 title:  'Check this out!',
                 text:  'Amazing post on our platform!',
-                url: post?._id,  // Use the generated URL
+                url: `${postUrl}`, // Use the generated URL
               });
               console.log('Post shared successfully');
             } catch (error) {
