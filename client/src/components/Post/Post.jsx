@@ -40,6 +40,28 @@ const Post = (props) => {
 
 
 
+        const shareOnOtherApps = async (post) => {
+          // const { title, content, _id } = post;
+          // const postUrl = generatePostUrl(_id); // Generate dynamic URL
+        
+          if (navigator.share) {
+            try {
+              await navigator.share({
+                title:  'Check this out!',
+                text:  'Amazing post on our platform!',
+                url: "postUrl", // Use the generated URL
+              });
+              console.log('Post shared successfully');
+            } catch (error) {
+              console.error('Error while sharing:', error);
+            }
+          } else {
+            alert('Sharing is not supported on this device.');
+          }
+        };
+        
+
+
   return (
     <div className='Post'>
       <img src={props?.data.Image} alt='no img'/>
@@ -47,7 +69,7 @@ const Post = (props) => {
         <div className='postReact'>
             <img src={liked?Heart:NotLike} style={{cursor:"pointer"}} onClick={handlelike}></img>
             <img src={Comment}></img>
-            <img src={Share}></img>
+            <img src={Share}  onClick={shareOnOtherApps}></img>
         {props?.delete ? (   <img src={deleteicon}  onClick={handleDelete }></img>):(<></>)}
         </div>
 
