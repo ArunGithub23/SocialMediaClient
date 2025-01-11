@@ -13,13 +13,19 @@ import { deletePostAction } from '../../actions/postAction'
 
 
 const Post = (props) => {
-        const {user}=useSelector((state)=>state.authReducer.authData)
+        let user=null
+        const authData=useSelector((state)=>state?.authReducer?.authData)
         const [liked,setliked]=useState(props?.data?.likes.includes(user?._id))
-        const [likes,setlikes]=useState(props?.data?.likes.length)
-        let { posts } = useSelector((state) => state.postReducer);
+        const [likes,setlikes]=useState(props?.data?.likes?.length)
+        let { posts } = useSelector((state) => state?.postReducer);
 
         const dispatch=useDispatch()
         console.log("data is",props?.data)
+
+        !authData? user=null : user=authData?.user
+        
+        console.log("user is",authData,user);
+        
 
         const handlelike=()=>{
           setliked((prev)=>!prev)

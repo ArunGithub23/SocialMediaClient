@@ -50,7 +50,7 @@ function App() {
           <Route path='/mobile/search' element={mobile&&user? <Search/>:<Navigate to="../auth"/>}/>
 
           {/* //public posts shared bu user */}
-          <Route path='/mobile/sharedpost/:id' element={mobile? <SharedPost/>: <></>}/>
+          <Route path='/mobile/sharedpost/:id' element={ <SharedPost/>}/>
 
 
       </Routes>
