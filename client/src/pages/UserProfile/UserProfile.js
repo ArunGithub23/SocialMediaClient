@@ -71,15 +71,19 @@ const UserProfile = () => {
       <div className="followStatus">
         <hr />
         <div>
+        <Link to={`/mobile/following/${user._id}`} >
           <div className="follow">
             <span>{user?.following?.length}</span>
             <span>Following</span>
           </div>
+          </Link>
           <div className="vl"></div>
+          <Link to={`/mobile/follower/${user._id}`} >
           <div className="follow">
             <span>{user?.followers?.length}</span>
             <span>Followers</span>
           </div>
+          </Link>
         </div>
         <hr />
       </div>

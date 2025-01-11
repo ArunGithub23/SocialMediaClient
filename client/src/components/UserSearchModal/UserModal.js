@@ -12,6 +12,8 @@ const UserModal = ( props ) => {
     const [onClose,setonClose]=useState()
     // const [searchinput1,setsearchinput1]=useState(props.data.searchinput)
     const currentUserId= useSelector((state)=>state.authReducer.authData.user._id)
+    const following= useSelector((state)=>state.authReducer.authData.user.following)
+    
     const BaseUrl=process.env.REACT_APP_BaseUrl1
     const dispatch = useDispatch();
     let selecteduser=useSelector((state) => state.authReducer.selecteduser)
@@ -142,7 +144,7 @@ useEffect(()=>{
                   <p>@{user.username}</p>
                 </div>
                 <button className="follow-btn" onClick={() => onFollow(user.id)}>
-                  Follow
+                  {following.includes(user.id)?"Unfollow":"Follow"}
                 </button>
               
               </li>

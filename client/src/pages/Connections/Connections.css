@@ -1,0 +1,20 @@
+@media screen and (min-width: 768px) {
+.connections{
+    width:60vw;
+    margin: auto;
+}
+}
+
+.follow-btn{ 
+    padding: 10px !important;
+}
+
+.my-link-c {
+    color: blue;
+    text-decoration: none;
+  }
+  
+  .my-link-c:hover {
+    color: darkblue;
+    text-decoration: underline;
+  }

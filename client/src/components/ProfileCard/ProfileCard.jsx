@@ -84,15 +84,19 @@ const ProfileCard = () => {
         <div className='followStatus'>
             <hr/>
             <div>
-                <div className='follow' onClick={toggleButton}>
+                <Link to={`/mobile/following/${user._id}`} >
+                <div className='follow'>
                     <span>{user?.following?.length}</span>
                      <span>Following</span> 
                     </div>
+                </Link>
                 <div className='vl'></div>
-                <div className='follow' onClick={toggleButton1}>
+                <Link to={`/mobile/follower/${user._id}`} >
+                <div className='follow'>
                     <span>{user?.followers?.length}</span>
                    <span>Followers</span> 
                 </div>
+                </Link>
 
             </div>
             <hr/>
