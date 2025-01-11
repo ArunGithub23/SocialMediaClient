@@ -84,3 +84,20 @@ export const FollowButtonClicked = (status) => ({
   type: "FOLLOW_BUTTON_CLICKED",
   payload: status,
 });
+
+
+
+export const LatestUser=(userid)=>async(dispatch)=>{
+   
+  dispatch({type :'AUTH_START'})
+  try {
+   const data=await AuthApi.LatestUser(userid)
+   let user=data?.data
+
+   dispatch({type :'LATESTUSER_AUTH_SUCCESSFUL',data:{user,token:''}})
+  } catch (error) {
+   console.log(error)
+   dispatch({type :'AUTH_FAIL'})
+  }
+   
+}

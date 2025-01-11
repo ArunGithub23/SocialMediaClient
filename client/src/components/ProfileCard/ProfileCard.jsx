@@ -4,7 +4,7 @@ import Cover from '../../img/cover.jpg'
 import Profile from '../../img/defaultProfile.png'
 import {useDispatch, useSelector} from 'react-redux'
 import { Link, useNavigate,  } from 'react-router-dom'
-import { FollowButtonClicked, SetShowListOf } from '../../actions/AuthAction'
+import { FollowButtonClicked, LatestUser, SetShowListOf } from '../../actions/AuthAction'
 import Follower from '../../pages/Follower/Follower'
 import Posts from '../Posts/Posts'
 import PostSide from '../PostSide/PostSide'
@@ -25,11 +25,17 @@ const ProfileCard = () => {
  let selecteduser=useSelector((state) => state.authReducer.selecteduser)
   const [mobile,setMobile] = useState(false);
      // Detect screen size
+
+
+
      useEffect(() => {
        const handleResize = () => {
          setMobile(window.innerWidth <= 768); // Adjust breakpoint as needed
        };
        handleResize(); // Check on initial load
+
+        dispatch(LatestUser(user?._id))
+
        window.addEventListener('resize', handleResize);
        return () => window.removeEventListener('resize', handleResize);
      }, []);
@@ -60,17 +66,17 @@ const ProfileCard = () => {
   return ( <div className='ProfileCard'>
         <button onClick={()=>{navigate("../home")}}> Back</button>
         <div className='ProfileImages'>
-           <img src={(user.coverPicture?serverPublic+user.coverPicture: Cover)} alt=''/> 
-           <img src={user.profilePicture?serverPublic+user.profilePicture:Profile}/>
+           <img src={(user?.coverPicture?serverPublic+user.coverPicture: Cover)} alt=''/> 
+           <img src={user?.profilePicture? (user?.profilePicture) : Profile}/>
         </div>
 
         <div className='ProfileName'>
-            <span>{user.firstname}{"  "+user.lastname}</span>
+            <span>{user?.firstname}{"  "+user?.lastname}</span>
             <div>
             <button onClick={openEditProfile}>Edit Profile</button>
             <EditProfile isOpen={isEditProfileOpen} onClose={closeEditProfile} />
             </div>
-            <span>{user.worksAt?user.worksAt:"Write About Yourself"}</span>
+            <span>{user?.worksAt?user.worksAt:"Write About Yourself"}</span>
         </div>
 
         
@@ -78,12 +84,12 @@ const ProfileCard = () => {
             <hr/>
             <div>
                 <div className='follow' onClick={toggleButton}>
-                    <span>{user.following.length}</span>
+                    <span>{user?.following?.length}</span>
                      <span>Following</span> 
                     </div>
                 <div className='vl'></div>
                 <div className='follow' onClick={toggleButton1}>
-                    <span>{user.followers.length}</span>
+                    <span>{user?.followers?.length}</span>
                    <span>Followers</span> 
                 </div>
 
@@ -91,7 +97,7 @@ const ProfileCard = () => {
             <hr/>
         </div>
         <span >
-            <Link state={{ decoration:"none",color:"inherit"}} to={`/profile/${user._id}`}> My Profile</Link>
+            <Link state={{ decoration:"none",color:"inherit"}} to={`/profile/${user?._id}`}> My Profile</Link>
            </span>
 
 {    followclicked&&mobile? (      <Follower/> ) :(<></>) }     
