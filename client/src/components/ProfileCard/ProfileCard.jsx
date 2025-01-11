@@ -8,8 +8,15 @@ import { FollowButtonClicked, SetShowListOf } from '../../actions/AuthAction'
 import Follower from '../../pages/Follower/Follower'
 import Posts from '../Posts/Posts'
 import PostSide from '../PostSide/PostSide'
+import EditProfile from '../EditProfile/EditProfile'
 
 const ProfileCard = () => {
+
+    const [isEditProfileOpen, setIsEditProfileOpen] = useState(false);
+
+    const openEditProfile = () => setIsEditProfileOpen(true);
+    const closeEditProfile = () => setIsEditProfileOpen(false);
+  
     const followclicked=useSelector((state) => state.authReducer.followclicked);
   const {user}=useSelector((state)=>state.authReducer.authData)
   const serverPublic=process.env.REACT_APP_PUBLIC_FOLDER
@@ -59,9 +66,14 @@ const ProfileCard = () => {
 
         <div className='ProfileName'>
             <span>{user.firstname}{"  "+user.lastname}</span>
+            <div>
+            <button onClick={openEditProfile}>Edit Profile</button>
+            <EditProfile isOpen={isEditProfileOpen} onClose={closeEditProfile} />
+            </div>
             <span>{user.worksAt?user.worksAt:"Write About Yourself"}</span>
         </div>
 
+        
         <div className='followStatus'>
             <hr/>
             <div>
