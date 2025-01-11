@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import "./Infocard.css";
 import { UilPen } from "@iconscout/react-unicons";
 import ProfileModal from "../ProfileModal/ProfileModal";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../actions/AuthAction";
 
 const Infocard = () => {
 
   const [modalOpened, setModalOpened] = useState(false);
    const [data,setData]=useState({firstname:"",lastname:"",password:"",confpass:"",username:""})
+   const {user}=useSelector((state)=>state.authReducer.authData)
+
   
   const dispatch=useDispatch()
 
@@ -36,19 +38,19 @@ const Infocard = () => {
         <span>
           <b>Status</b>
         </span>
-        <span>in RelationShip</span>
+        <span>{user?.relationship}</span>
       </div>
       <div className="info">
         <span>
           <b>Lives in</b>
         </span>
-        <span>Multan</span>
+        <span>{user?.livesin}</span>
       </div>
       <div className="info">
         <span>
-          <b>WOrks at</b>
+          <b>Works at</b>
         </span>
-        <span>india</span>
+        <span>{user?.worksAt}</span>
       </div>
       <button className="button" onClick={()=>{    dispatch(logout())  }}>Logoutd</button>
     </div>

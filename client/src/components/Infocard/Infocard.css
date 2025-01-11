@@ -16,3 +16,8 @@
     align-items: center;
 }
 
+.info{
+    display: flex;
+    gap: 1rem;
+}
+

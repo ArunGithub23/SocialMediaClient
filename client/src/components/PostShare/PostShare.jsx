@@ -69,7 +69,7 @@ console.log("postshare image",image)
 
   return (
     <div className="PostShare">
-      <img src={user.profilePicture?serverPublic+user.profilePicture:defaultProfile} alt="#" />
+      <img src={user?.profilePicture ? user?.profilePicture:defaultProfile} alt="#" />
 
       <div>
         <input type="text" ref={desc} required placeholder="Add Description..." />

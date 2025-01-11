@@ -3,14 +3,14 @@ import './EditProfile.css';
 import { useSelector } from 'react-redux';
 
 const EditProfile = ({ isOpen, onClose }) => {
+  const {user}=useSelector((state)=>state.authReducer.authData)
   const [profilePic, setProfilePic] = useState(null);
   const [coverPic, setCoverPic] = useState(null);
-  const [name, setName] = useState('');
-  const [about, setAbout] = useState('');
-  const [livesIn, setLivesIn] = useState('');
-  const [worksAt, setWorksAt] = useState('');
-  const [relationship, setRelationship] = useState('');
-  const {user}=useSelector((state)=>state.authReducer.authData)
+  const [name, setName] = useState(user?.firstname);
+  const [about, setAbout] = useState(user?.about);
+  const [livesIn, setLivesIn] = useState(user?.livesin);
+  const [worksAt, setWorksAt] = useState(user?.worksAt);
+  const [relationship, setRelationship] = useState(user?.relationship);
     const userid=user._id
 
   const BaseUrl = process.env.REACT_APP_BaseUrl1;
@@ -60,11 +60,11 @@ const EditProfile = ({ isOpen, onClose }) => {
   const resetForm = () => {
     setProfilePic(null);
     setCoverPic(null);
-    setName('');
-    setAbout('');
-    setLivesIn('');
-    setWorksAt('');
-    setRelationship('');
+    setName(user?.firstname);
+    setAbout(user?.about);
+    setLivesIn(user?.livesin);
+    setWorksAt(user?.worksAt);
+    setRelationship(user?.relationship);
   }
   if (!isOpen) return null;
 
