@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import './UserListPanel.css';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ChatUserClicked } from '../../actions/AuthAction';
 
 
@@ -76,8 +76,10 @@ useEffect(()=>{
       
         <h3>Chat  With Followers</h3>
       </div>
+
       <div className="user-list">
         {users.map((user) => (
+          
           <div
             key={user.userid}
             className="user-item"
@@ -88,6 +90,9 @@ useEffect(()=>{
 
             }}
           >
+           
+           
+         
             <div className="avatar">{user?.username.charAt(0).toUpperCase()}</div>
             <div className="user-info">
               <div className="user-name">{user?.username}</div>
@@ -95,7 +100,11 @@ useEffect(()=>{
                 {user.lastMessage || 'No messages yet'}
               </div>
             </div>
+            
           </div>
+
+
+
         ))}
       </div>
     </div>

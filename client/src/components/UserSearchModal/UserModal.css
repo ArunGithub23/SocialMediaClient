@@ -11,6 +11,17 @@
     z-index: 1000;
   }
   
+  .my-link {
+    color: blue;
+    text-decoration: none;
+  }
+  
+  .my-link:hover {
+    color: darkblue;
+    text-decoration: underline;
+  }
+  
+
   .modal-container {
     background-color: #fff;
     width: 500px;

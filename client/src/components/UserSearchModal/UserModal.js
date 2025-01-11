@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./UserModal.css"; // Include basic CSS for styling the modal
 import { useDispatch, useSelector } from "react-redux";
 import { UpdateSelectedUser } from '../../actions/AuthAction'
+import { Link } from "react-router-dom";
 
 
 const UserModal = ( props ) => {
@@ -120,7 +121,8 @@ useEffect(()=>{
                 console.log("user.firstname",user.firstname);
                 
                 return(
-              <li key={user.id} className="user-item"  onClick={(e)=>{if(selecteduser!=user?.id){setSelecteduser(user?.id)}else{setSelecteduser(currentUserId)}; // Check the current background color of the clicked element
+                  <Link className="my-link" key={user.id} to={`/mobile/userprofile/${user?.id}`}> 
+              <li  className="user-item"  onClick={(e)=>{if(selecteduser!=user?.id){setSelecteduser(user?.id)}else{setSelecteduser(currentUserId)}; // Check the current background color of the clicked element
               const currentColor = e.currentTarget.style.background;
           
               // Reset all followers' background to white
@@ -133,6 +135,7 @@ useEffect(()=>{
     }} 
               
               >
+                
                 <img src={user.image} alt={user.username} className="user-image" />
                 <div className="user-details" style={{color:'black'}}>
                   <p><strong style={{color:'black'}}>{user.firstname}</strong></p>
@@ -141,7 +144,9 @@ useEffect(()=>{
                 <button className="follow-btn" onClick={() => onFollow(user.id)}>
                   Follow
                 </button>
+              
               </li>
+              </Link>
                 )
    }   )}
           </ul>

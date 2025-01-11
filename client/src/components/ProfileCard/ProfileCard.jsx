@@ -63,7 +63,8 @@ const ProfileCard = () => {
         }
 
 
-  return ( <div className='ProfileCard'>
+  return ( 
+  <div className='ProfileCard'>
         <button onClick={()=>{navigate("../home")}}> Back</button>
         <div className='ProfileImages'>
            <img src={(user?.coverPicture?serverPublic+user.coverPicture: Cover)} alt=''/> 
