@@ -18,23 +18,39 @@ const UserProfile = () => {
     const { id } = useParams();
     const BaseUrl = process.env.REACT_APP_BaseUrl1;
 
+    
     const fetchUser = async()=>{ 
-        const response = await fetch(`${BaseUrl}/user/${id}`);
-        const json = await response.json();
-        setUser(json)
-        console.log("user ", json);
+
+    try {
+      const response = await fetch(`${BaseUrl}/user/${id}`);
+      const json = await response.json();
+      setUser(json)
+      console.log("user ", json);
+
+    } catch (error) {
+      console.log(error);
+      
+    }
+       
     }
 
     const fetchUserPosts = async()=>{ 
+
+      try {
         const response = await fetch(`${BaseUrl}/post/${id}`,{ 
-            method:'POST',
-            headers: {
-                "Content-Type": "application/json", 
-            } 
-        });
-        const json = await response.json();
-        setPosts(json);
-        console.log("user posts ", json);
+          method:'POST',
+          headers: {
+              "Content-Type": "application/json", 
+          } 
+      });
+      const json = await response.json();
+      setPosts(json);
+      console.log("user posts ", json);
+      } catch (error) {
+        console.log(error);
+        
+      }
+        
     }
 
     useEffect(()=>{
@@ -93,7 +109,7 @@ const UserProfile = () => {
     </div>
   
     <div className="Posts">
-      {posts.map((post, id) => {
+      {posts?.map((post, id) => {
         return <Post data={post} key={id} />;
       })}
     </div>

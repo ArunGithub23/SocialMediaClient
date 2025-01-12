@@ -37,20 +37,30 @@ const setSelectedChatUser = (id,name) => {
 
 useEffect(()=>{
     const test=async()=>{
+
+
+      try {
         // const data={senderid,recipient}
     
         const response=await fetch(`${BaseUrl}/user/allusers`,{
-            method:'post',
-            headers:{'content-type':"application/json"},
-            body:JSON.stringify({})
-        });
-            const response1=await response.json()
-            // console.log('chat response is ',response1)
-            setusers(response1)
-            // updaterecipient(response1.result1.recipientid)
+          method:'post',
+          headers:{'content-type':"application/json"},
+          body:JSON.stringify({})
+      });
+          const response1=await response.json()
+          // console.log('chat response is ',response1)
+          setusers(response1)
+          // updaterecipient(response1.result1.recipientid)
 
-        }
-        test()
+      
+      } catch (error) {
+        console.log(error);
+        
+      }
+        
+
+}
+test()
 
 },[])
 

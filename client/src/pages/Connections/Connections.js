@@ -21,6 +21,8 @@ const Connections = () => {
 
 
     const fetchUser = async()=>{ 
+
+      try {
         const response = await fetch(`${BaseUrl}/user/${id}`);
         const json = await response.json();
         setUser(json)
@@ -37,6 +39,11 @@ const Connections = () => {
         console.log("connections ",connections);
         console.log("user ", json);
         
+      } catch (error) {
+        console.log(error);
+        
+      }
+       
     }
 
 
