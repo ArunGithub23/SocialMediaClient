@@ -3,6 +3,35 @@
     width:60vw;
     margin: auto;
 }
+
+
+
+}
+
+.connections{
+  max-height: 90vh;
+  margin: auto;
+}
+
+.connections-header{
+display: flex;  
+height: 5vh;
+  background-color: rgb(164, 78, 25);
+  justify-content: space-between;
+  align-content: center;
+  border-radius: 8px;
+}
+.connections-header>div:nth-child(2){
+  /* background-color: aqua; */
+  color: white;
+  align-content: center;
+}
+
+.connections-header-button{
+width: 15%; 
+font-size: xx-large;
+font-weight:bolder;
+border-radius: 0%;
 }
 
 .follow-btn{ 
@@ -18,3 +47,5 @@
     color: darkblue;
     text-decoration: underline;
   }
+
+

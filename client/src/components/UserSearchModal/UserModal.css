@@ -8,7 +8,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    pointer-events: none; /* Allow clicks to pass through */
+
+    /* z-index: 1000; */
   }
   
   .my-link {
@@ -32,6 +34,8 @@
     flex-direction: column;
     position: relative;
     overflow: hidden;
+    pointer-events: auto; /* Allow clicks to pass through */
+
   }
   
   .close-button {

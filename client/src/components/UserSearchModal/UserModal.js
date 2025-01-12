@@ -3,6 +3,7 @@ import "./UserModal.css"; // Include basic CSS for styling the modal
 import { useDispatch, useSelector } from "react-redux";
 import { UpdateSelectedUser } from '../../actions/AuthAction'
 import { Link } from "react-router-dom";
+import defaultProfile from '../../img/defaultProfile.png'
 
 
 const UserModal = ( props ) => {
@@ -63,9 +64,10 @@ useEffect(()=>{
               
               // Extract only firstname and username
               const users1 = data.map(user => ({
-                firstname: user.firstname,
-                username: user.username,
-                id:user._id
+                firstname: user?.firstname,
+                username: user?.username,
+                image: user?.profilePicture,
+                id:user?._id
               }));
 
               setusers(users1)
@@ -113,9 +115,9 @@ useEffect(()=>{
     ( onClose ?
     <div className="modal-overlay">
       <div className="modal-container">
-       {!mobile? ( <button className="close-btn" onClick={()=>{setonClose(false)}}>
+        <button className="close-btn" onClick={()=>{setonClose(false)}}>
           ×
-        </button>):(<> </>)}
+        </button>
         <h4>Search Results </h4>
         {users.length > 0 ? (
           <ul className="user-list">
@@ -138,7 +140,7 @@ useEffect(()=>{
               
               >
                 
-                <img src={user.image} alt={user.username} className="user-image" />
+                <img src={user?.image? user?.image : defaultProfile } alt={user.username} className="user-image" />
                 <div className="user-details" style={{color:'black'}}>
                   <p><strong style={{color:'black'}}>{user.firstname}</strong></p>
                   <p>@{user.username}</p>

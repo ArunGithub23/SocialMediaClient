@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import { useParams,Link } from "react-router-dom";
+import { useParams,Link, useNavigate } from "react-router-dom";
 import './Connections.css'
 import { useSelector } from 'react-redux';
+import defaultProfile from '../../img/defaultProfile.png';
 
 const Connections = () => {
     const { type, id } = useParams();
-    // const [user,setUser] = useState({});
+    const [user,setUser] = useState();
     // let connections = [];
     const [connections,setConnections] = useState([]);
     
     const [connectionsInfo,setConnectionsInfo] = useState([]);
 
     const following= useSelector((state)=>state.authReducer.authData.user.following)
+     const navigate= useNavigate()
+    
 
     console.log("Route ", type, id);
     const BaseUrl = process.env.REACT_APP_BaseUrl1;
@@ -20,7 +23,7 @@ const Connections = () => {
     const fetchUser = async()=>{ 
         const response = await fetch(`${BaseUrl}/user/${id}`);
         const json = await response.json();
-        // setUser(json)
+        setUser(json)
         if (type === "following"){ 
             console.log("inside if following")
             setConnections(json.following);
@@ -81,6 +84,13 @@ const Connections = () => {
 
   return (
     <div className='connections'>
+      <div className="connections-header">
+      <button className="connections-header-button" onClick={()=>{navigate(-1)}}> {`←`} </button> 
+      <div >{user?.firstname}</div>
+      <div></div>
+       
+     </div>
+     
       {connectionsInfo.length > 0 ? (
           <ul className="user-list">
             {connectionsInfo.map((user) => {
@@ -91,7 +101,7 @@ const Connections = () => {
               <li  className="user-item"  
               >
                 
-                <img src={user.image} alt={user.username} className="user-image" />
+                <img src={user?.image? user?.image : defaultProfile } alt={user.username} className="user-image" />
                 <div className="user-details" style={{color:'black'}}>
                   <p><strong style={{color:'black'}}>{user.firstname}</strong></p>
                   <p>@{user.username}</p>

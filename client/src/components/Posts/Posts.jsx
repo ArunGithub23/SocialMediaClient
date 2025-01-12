@@ -24,7 +24,7 @@ const Posts = () => {
 
   useEffect(() => {
     // console.log('selecteduser in posts file',x);
-    dispatch(getTimeLinePosts(selecteduser));
+    dispatch(getTimeLinePosts(currentUserId));
   }, [selecteduser]);
   if(!posts) return 'No Posts';
   if(params.id){ posts = posts.filter((post)=> post?.userid===params?.id)}
@@ -32,7 +32,7 @@ const Posts = () => {
   
   return (
     <div className="Posts">
-           {   selecteduser!==currentUserId?<button onClick={ ()=>{   dispatch(UpdateSelectedUser(currentUserId)) }}> Back</button> :null}
+           {/* {   selecteduser!==currentUserId?<button onClick={ ()=>{   dispatch(UpdateSelectedUser(currentUserId)) }}> Back</button> :null} */}
 
       {loading
         ? "Fetching posts...."

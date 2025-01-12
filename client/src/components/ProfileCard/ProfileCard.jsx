@@ -65,8 +65,8 @@ const ProfileCard = () => {
 
   return ( 
   <div className='ProfileCard'>
-        <button onClick={()=>{navigate("../home")}}> Back</button>
-        <div className='ProfileImages'>
+   {  !mobile ?  <button onClick={()=>{navigate("../home")}}> Back</button> : <></>   }  
+      <div className='ProfileImages'>
            <img src={(user?.coverPicture?serverPublic+user.coverPicture: Cover)} alt=''/> 
            <img src={user?.profilePicture? (user?.profilePicture) : Profile}/>
         </div>
@@ -84,14 +84,14 @@ const ProfileCard = () => {
         <div className='followStatus'>
             <hr/>
             <div>
-                <Link to={`/mobile/following/${user._id}`} >
+                <Link className='my-link-follow' to={`/mobile/following/${user._id}`} >
                 <div className='follow'>
                     <span>{user?.following?.length}</span>
                      <span>Following</span> 
                     </div>
                 </Link>
                 <div className='vl'></div>
-                <Link to={`/mobile/follower/${user._id}`} >
+                <Link  className='my-link-follow' to={`/mobile/follower/${user._id}`} >
                 <div className='follow'>
                     <span>{user?.followers?.length}</span>
                    <span>Followers</span> 
@@ -105,7 +105,7 @@ const ProfileCard = () => {
             <Link state={{ decoration:"none",color:"inherit"}} to={`/profile/${user?._id}`}> My Profile</Link>
            </span>
 
-{    followclicked&&mobile? (      <Follower/> ) :(<></>) }     
+{/* {    followclicked&&mobile? (      <Follower/> ) :(<></>) }      */}
 
 {  mobile ? ( <PostSide/> ) : (<></>)}    
     </div> 

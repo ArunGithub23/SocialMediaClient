@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react';
-import { Link,useParams } from 'react-router-dom'
+import { Link,useNavigate,useParams } from 'react-router-dom'
 import Post from '../../components/Post/Post';
 import Cover from '../../img/cover.jpg'
 import Profile from '../../img/defaultProfile.png'
@@ -11,11 +11,8 @@ const UserProfile = () => {
 
 
     const [mobile,setMobile] = useState(false);
-
-  
-      // Detect screen size
-      
-
+    const navigate= useNavigate()
+    
     const [user,setUser] = useState({});
     const [posts,setPosts] = useState([]);
     const { id } = useParams();
@@ -58,6 +55,12 @@ const UserProfile = () => {
   return (
     <div className="my-container">
     <div className="ProfileCard">
+
+    <div className="connections-header">
+      <button className="connections-header-button" onClick={()=>{navigate(-1)}}> {`←`} </button> 
+       
+     </div>
+     
       <div className="ProfileImages">
         <img src={(Cover)} alt="" />
         <img src={user?.profilePicture ? user.profilePicture : Profile} />
