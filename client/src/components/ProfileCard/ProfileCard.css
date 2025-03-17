@@ -151,9 +151,9 @@ overflow-y: auto;
 /* Mobile-specific styles */
 @media (max-width: 768px) {
     .ProfileCard {
-      width: 90%;
+      width: 100%;
       margin: 0 auto;
-      padding: 15px;
+      padding: 0px;
       box-sizing: border-box;
       border-radius: 10px;
     }
