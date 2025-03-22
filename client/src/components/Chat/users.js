@@ -84,7 +84,7 @@ test()
       <span style={{ marginRight: "8px", fontSize: "1.5rem" }}>←</span> Back
     </button> */}
       
-        <h3>Chat  With Followers</h3>
+        <h3>Chat  With Others</h3>
       </div>
 
       <div className="user-list">

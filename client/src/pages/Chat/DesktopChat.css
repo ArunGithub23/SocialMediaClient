@@ -39,6 +39,19 @@
       margin-right: 5vw;
     }
     
+    .user-list-panel{
+      height: 90vh;         
+
+    }
+
+    .user-list-header{
+      position:fixed;
+      top:0;
+      left: 0;
+      border-radius: 0%;
+      width: 100%;
+      margin: 0px;
+    }
 
   }
   

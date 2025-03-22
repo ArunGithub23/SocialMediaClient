@@ -78,8 +78,9 @@ const Post = (props) => {
             <img src={Share}  onClick={shareOnOtherApps}></img>
         {props?.delete ? (   <img src={deleteicon}  onClick={handleDelete }></img>):(<></>)}
         </div>
-
-        <span>{likes}likes</span>
+        <div className='likes'>
+         <span>{likes}likes</span>
+        </div>
         <div className='datail'>
             <span><b>{props?.data?.name}</b></span>
             <span>{props?.data?.desc}</span>
