@@ -1,14 +1,14 @@
 .desktop-chat-container {
     display: flex !important;           /* Enables Flexbox */
     flex-direction: row;     /* Horizontal layout */
-    height: 100vh;           /* Full viewport height */
+    height: 94vh;           /* Full viewport height */
     width: 100vw;
     justify-content: center;
   }
   
   .desktop-chat-container > * {
     flex: 1;                 /* Each child takes equal space by default */
-    overflow: auto;          /* Handle overflow content gracefully */
+     overflow: hidden;       /*   Handle overflow content gracefully */
   }
   
   /* Customize proportions if needed */
@@ -45,11 +45,11 @@
     }
 
     .user-list-header{
-      position:fixed;
+      position:relative;
       top:0;
       left: 0;
       border-radius: 0%;
-      width: 100%;
+      width: 90%;
       margin: 0px;
     }
 

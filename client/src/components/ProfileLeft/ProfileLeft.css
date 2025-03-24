@@ -1,0 +1,14 @@
+
+
+
+@media (max-width: 768px) {
+  
+    .ProfileLeft{
+        
+    width: 120%;
+    z-index: 1;
+    background: aliceblue;
+
+    }
+    
+}
